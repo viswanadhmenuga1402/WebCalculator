@@ -1,0 +1,82 @@
+SCIENTIFIC CALCULATOR - PROJECT GUIDE (Plain Text)
+================================================
+
+WHAT IS THIS PROJECT?
+---------------------
+A web-based scientific calculator that runs in any browser.
+No installation needed. Just open index.html.
+
+FILES IN THE PROJECT
+--------------------
+1. index.html  -> The structure (buttons, display, layout). Uses basic HTML.
+2. style.css   -> The look (colors, glass effect, animations, responsive).
+3. script.js   -> The brain (math logic, history, theme, keyboard).
+4. README.md   -> Short documentation shown on GitHub.
+5. .gitignore  -> Tells Git to ignore junk files.
+
+HOW IT WAS MADE (STEP BY STEP)
+------------------------------
+Step 1: Created index.html with a calculator layout using <div>, <input>, <button>.
+        Each button calls a JavaScript function using onclick="...".
+Step 2: Styled it with style.css using CSS variables, flexbox/grid, glassmorphism,
+        and media queries for mobile.
+Step 3: Wrote script.js:
+        - appendValue() adds numbers/symbols to display.
+        - clearDisplay() resets display to 0.
+        - calculate() evaluates the expression safely (NO eval).
+        - appendFunction() adds sin(, cos(, etc.
+        - factorialNow() computes factorial of current value.
+        - Safe math engine: tokenize() breaks text into tokens,
+          Parser class evaluates using recursive descent (standard math rules).
+        - History stored in an array and shown in sidebar.
+        - Theme toggled and saved in localStorage.
+        - Keyboard keys mapped to calculator actions.
+Step 4: Added README.md and .gitignore.
+Step 5: Initialized Git, committed, created GitHub repo, pushed code.
+
+WHICH TECHNOLOGIES / TOOLS WERE USED
+-------------------------------------
+- Languages: HTML, CSS, JavaScript (pure, no frameworks).
+- Editor: Any text editor (VS Code used here).
+- Version control: Git.
+- Hosting: GitHub (https://github.com/viswanadhmenuga1402/WebCalculator).
+- Browser: Chrome/Edge/Firefox to run.
+
+WHICH ALGORITHM IS USED
+-----------------------
+Safe Expression Parser (Recursive Descent):
+  - Tokenizer splits input like "2+3*4" into [2, +, 3, *, 4].
+  - Parser follows math priority: brackets -> power -> multiply/divide -> add/subtract.
+  - Functions (sin, cos, sqrt, log) and constants (pi, e) are allowed only from a fixed list.
+  - This avoids eval() and prevents code injection (security).
+
+MAIN FEATURES TO EXPLAIN TO OTHERS
+---------------------------------
+- Basic math: + - x / % ^ (power)
+- Scientific: sin, cos, tan, sqrt, ln, log
+- Constants: pi and e
+- Factorial (x!) and power (x^y)
+- Parentheses for grouping
+- Calculation history (click to reuse)
+- Keyboard support
+- Dark/Light theme
+- Copy result button
+- Mobile responsive
+- Secure: no eval, safe parser
+
+HOW TO RUN
+----------
+1. Download or clone the repo.
+2. Double-click index.html (opens in browser).
+   OR visit the GitHub Pages link if enabled.
+
+ONE-LINE EXPLANATION (FOR INTERVIEWS / FRIENDS)
+-----------------------------------------------
+"I built a scientific calculator website using HTML, CSS, and JavaScript.
+It has a safe math parser instead of eval, supports scientific functions,
+history, themes, and keyboard input."
+
+AUTHOR
+------
+MENUGA SAI VENKATA VISWANADH
+GitHub: https://github.com/viswanadhmenuga1402
