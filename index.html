@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,57 +7,86 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-
-<div class="calculator">
-
-    <div class="header">
-        <h2>Calculator</h2>
+    <div class="bg-orbs" aria-hidden="true">
+        <span class="orb orb-1"></span>
+        <span class="orb orb-2"></span>
+        <span class="orb orb-3"></span>
     </div>
 
-    <input type="text" id="display" readonly value="0">
+    <div class="app">
+        <header class="topbar">
+            <div class="brand">
+                <span class="logo">&#8721;</span>
+                <h1>Scientific Calculator</h1>
+            </div>
+            <div class="topbar-actions">
+                <button id="copyBtn" class="icon-btn" aria-label="Copy result" title="Copy result">&#10697;</button>
+                <button id="historyToggle" class="icon-btn" aria-label="Toggle history" title="History">&#128203;</button>
+                <button id="themeToggle" class="icon-btn" aria-label="Toggle theme" title="Toggle theme">&#127769;</button>
+            </div>
+        </header>
 
-    <div class="buttons">
+        <main class="calc">
+            <div class="display-wrap">
+                <div class="expr" id="expr"></div>
+                <input id="display" type="text" readonly value="0" aria-label="Calculator display" inputmode="decimal">
+            </div>
 
-        <button onclick="appendValue('Math.E')">e</button>
-        <button onclick="appendValue('Math.PI')">π</button>
-        <button onclick="appendValue('(')">(</button>
-        <button onclick="appendValue(')')">)</button>
-        <button onclick="appendValue('%')">%</button>
-        <button class="operator" onclick="clearDisplay()">AC</button>
+            <div class="buttons">
+                <button class="fn" onclick="appendValue('pi')">π</button>
+                <button class="fn" onclick="appendValue('e')">e</button>
+                <button onclick="appendValue('(')">(</button>
+                <button onclick="appendValue(')')">)</button>
+                <button onclick="appendValue('%')">%</button>
+                <button class="danger" onclick="clearDisplay()">AC</button>
 
-        <button onclick="appendFunction('sin')">sin</button>
-        <button onclick="appendFunction('cos')">cos</button>
-        <button onclick="appendValue('7')">7</button>
-        <button onclick="appendValue('8')">8</button>
-        <button onclick="appendValue('9')">9</button>
-        <button class="operator" onclick="appendValue('/')">÷</button>
+                <button class="fn" onclick="appendFunction('sin')">sin</button>
+                <button class="fn" onclick="appendFunction('cos')">cos</button>
+                <button onclick="appendValue('7')">7</button>
+                <button onclick="appendValue('8')">8</button>
+                <button onclick="appendValue('9')">9</button>
+                <button class="op" onclick="appendValue('/')">÷</button>
 
-        <button onclick="appendFunction('log')">ln</button>
-        <button onclick="appendFunction('log10')">log</button>
-        <button onclick="appendValue('4')">4</button>
-        <button onclick="appendValue('5')">5</button>
-        <button onclick="appendValue('6')">6</button>
-        <button class="operator" onclick="appendValue('*')">×</button>
+                <button class="fn" onclick="appendFunction('tan')">tan</button>
+                <button class="fn" onclick="appendFunction('sqrt')">√</button>
+                <button onclick="appendValue('4')">4</button>
+                <button onclick="appendValue('5')">5</button>
+                <button onclick="appendValue('6')">6</button>
+                <button class="op" onclick="appendValue('*')">×</button>
 
-        <button onclick="appendFunction('tan')">tan</button>
-        <button onclick="appendFunction('sqrt')">√</button>
-        <button onclick="appendValue('1')">1</button>
-        <button onclick="appendValue('2')">2</button>
-        <button onclick="appendValue('3')">3</button>
-        <button class="operator" onclick="appendValue('-')">-</button>
+                <button class="fn" onclick="appendFunction('log')">ln</button>
+                <button class="fn" onclick="appendFunction('log10')">log</button>
+                <button onclick="appendValue('1')">1</button>
+                <button onclick="appendValue('2')">2</button>
+                <button onclick="appendValue('3')">3</button>
+                <button class="op" onclick="appendValue('-')">−</button>
 
-        <button onclick="factorial()">x!</button>
-        <button onclick="appendValue('**')">xʸ</button>
-        <button onclick="appendValue('0')">0</button>
-        <button onclick="appendValue('.')">.</button>
-        <button class="equal" onclick="calculate()">=</button>
-        <button class="operator" onclick="appendValue('+')">+</button>
+                <button class="fn" onclick="factorialNow()">x!</button>
+                <button class="fn" onclick="appendValue('**')">xʸ</button>
+                <button onclick="appendValue('0')">0</button>
+                <button onclick="appendValue('.')">.</button>
+                <button class="equal" onclick="calculate()">=</button>
+                <button class="op" onclick="appendValue('+')">+</button>
 
+                <button class="util" onclick="appendValue('**2')">x²</button>
+                <button class="util" onclick="appendValue('^')">^</button>
+                <button class="util" onclick="appendValue('(')">(</button>
+                <button class="util" onclick="toggleSign()">±</button>
+                <button class="util" onclick="toPercent()">%</button>
+                <button class="util" onclick="deleteLast()">⌫</button>
+            </div>
+        </main>
+
+        <aside class="history" id="history" hidden>
+            <div class="history-header">
+                <h3>History</h3>
+                <button id="clearHistory" class="icon-btn" aria-label="Clear history" title="Clear">✕</button>
+            </div>
+            <ul id="historyList" class="history-list"></ul>
+            <p class="history-empty" id="historyEmpty">No calculations yet.</p>
+        </aside>
     </div>
 
-</div>
-
-<script src="script.js"></script>
-
+    <script src="script.js"></script>
 </body>
 </html>
